@@ -1,0 +1,31 @@
+- Homelab Apps:
+    - Immich:
+        icon: immich.png
+        href: https://photos.sunnygupta.me
+        description: Smart Photo Backups
+    - Jellyfin:
+        icon: jellyfin.png
+        href: https://media.sunnygupta.me
+        description: Home Theater Media Server
+    - File Manager:
+        icon: filebrowser.png
+        href: https://files.sunnygupta.me
+        description: Web File Explorer
+
+- Infrastructure & Security:
+    - Portainer:
+        icon: portainer.png
+        href: http://openmediavault.local:9000
+        description: Docker Management
+    - AdGuard Home:
+        icon: adguard-home.png
+        href: http://openmediavault.local:8085
+        description: Network-wide Ad Blocker
+    - Grafana:
+        icon: grafana.png
+        href: https://grafana.sunnygupta.me
+        description: Observability Metrics
+    - Uptime Kuma:
+        icon: uptime-kuma.png
+        href: http://openmediavault.local:3001
+        description: Status Monitoring

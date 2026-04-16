@@ -1,0 +1,19 @@
+name: adguard
+
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    restart: unless-stopped
+    volumes:
+      # Data and config directories
+      - /srv/docker/appdata/adguard/work:/opt/adguardhome/work
+      - /srv/docker/appdata/adguard/conf:/opt/adguardhome/conf
+    ports:
+      # DNS Forwarding Ports
+      - "53:53/tcp"
+      - "53:53/udp"
+      
+      # Admin UI Ports (avoiding conflict with OMV and Grafana)
+      - "3005:3000/tcp"  # Initial setup screen
+      - "8085:80/tcp"    # Admin dashboard (after setup)

@@ -1,0 +1,14 @@
+name: homepage
+
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    volumes:
+      # GitOps config mapping - pulls configuration directly from repo!
+      - ./config:/app/config:ro
+      # Optional Docker socket integration to show live container stats on the dashboard
+      - /var/run/docker.sock:/var/run/docker.sock:ro
