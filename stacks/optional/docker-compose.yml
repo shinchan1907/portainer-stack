@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime_kuma
+    volumes:
+      - /srv/docker/appdata/uptime-kuma:/app/data
+    ports:
+      - 3001:3001
+    restart: unless-stopped
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=86400 # Checks for updates every 24 hours
+      - WATCHTOWER_INCLUDE_STOPPED=true
+    restart: unless-stopped

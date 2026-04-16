@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC # Update to your local TZ
+    volumes:
+      - /srv/docker/appdata/jellyfin/config:/config
+      - /srv/media/movies:/data/movies
+      - /srv/media/tv:/data/tv
+      - /srv/media/anime:/data/anime
+      - /srv/media/music:/data/music
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  filemanager:
+    image: filebrowser/filebrowser:latest
+    container_name: filemanager
+    user: root
+    ports:
+      - 8080:80
+    volumes:
+      # Configurations and User Database
+      - /srv/docker/appdata/filemanager/data:/config
+      # Custom Javascript to add Upload file without Login
+      - ./branding:/branding:ro
+      # Root access to structure
+      - /srv:/srv
+    environment:
+      - FB_DATABASE=/config/filebrowser.db
+      - FB_ROOT=/srv
+      - FB_PORT=80
+    restart: unless-stopped
+    # Minimal CPU usage out of the box. Go binary uses ~20MB RAM.
